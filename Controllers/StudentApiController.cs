@@ -47,7 +47,7 @@ namespace PracticeAPIStudent.Controllers
 
         //POST : api/students/update
 
-        [HttpPost("update")]
+        [HttpPut]
 
         public JsonResult Update(StudentInfo student)
         {
