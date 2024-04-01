@@ -5,7 +5,7 @@ using PracticeAPIStudent.Data;
 
 namespace PracticeAPIStudent.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/students")]
     [ApiController]
     public class StudentApiController : ControllerBase
     {
@@ -15,10 +15,29 @@ namespace PracticeAPIStudent.Controllers
         {
             _context = context;
         }
-        //Create//Edit
+        //GET: api/students
+        [HttpGet]
+        public JsonResult Get(int Id)
+        {
+            var result = _context.Students.Find(Id);
 
-        [HttpPost]
+            if (result == null)
+            {
+                return new JsonResult(NotFound());
+            }
+            return new JsonResult(Ok(result));
+        }
         
+        // GET: api/students/all
+        [HttpGet("all")]
+        public JsonResult GetAll()
+        {
+            var result = _context.Students.ToList();
+
+            return new JsonResult(Ok(result));
+        }
+        // POST: api/students
+        [HttpPost]
         public JsonResult CreateEdit(StudentInfo student)
         {
             if (student.Id == 0)
@@ -40,22 +59,12 @@ namespace PracticeAPIStudent.Controllers
 
             return new JsonResult(Ok(student));
         }
-        [HttpGet]
-        public JsonResult Get(int Id)
-        {
-            var result = _context.Students.Find(Id);
-
-            if(result == null){
-                return new JsonResult(NotFound());
-            }
-            return new JsonResult(Ok());
-        }
-
-        [HttpDelete]
-
+        
+        //DELETE: api/students/{id}
+        [HttpDelete("{id}")]
         public JsonResult Delete(int Id)
         {
-            var result = (_context.Students.Find(Id));
+            var result = _context.Students.Find(Id);
 
             if(result == null)
             {
@@ -67,5 +76,7 @@ namespace PracticeAPIStudent.Controllers
 
             return new JsonResult(NoContent());
         }
+
+        
     }
 }
