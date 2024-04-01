@@ -11,7 +11,7 @@ namespace PracticeAPIStudent.Controllers
     {
         private readonly ApiContext _context;
 
-        public StudentApiController(ApiContext context) 
+        public StudentApiController(ApiContext context)
         {
             _context = context;
         }
@@ -27,7 +27,7 @@ namespace PracticeAPIStudent.Controllers
             }
             return new JsonResult(Ok(result));
         }
-        
+
         // GET: api/students/all
         [HttpGet("all")]
         public JsonResult GetAll()
@@ -40,24 +40,32 @@ namespace PracticeAPIStudent.Controllers
         [HttpPost]
         public JsonResult CreateEdit(StudentInfo student)
         {
-            if (student.Id == 0)
-            {
-                _context.Students.Add(student);
-            }
-            else
-            {
-                var existingStudent = _context.Students.Find(student.Id);
-
-                if (existingStudent == null)
-                {
-                    return new JsonResult(NotFound());
-                }
-
-                existingStudent = student;
-            }
-            _context.SaveChanges();
+            _context.Students.Add(student);
 
             return new JsonResult(Ok(student));
+        }
+
+        //POST : api/students/update
+
+        [HttpPost("update")]
+
+        public JsonResult Update(StudentInfo student)
+        {
+            var existingStudent = _context.Students.Find(student.Id);
+
+            if (existingStudent == null)
+            {
+                return new JsonResult(NotFound());
+            }
+            //update existing student data
+
+            existingStudent.Name = student.Name;
+            existingStudent.Roll = student.Roll;    
+
+            _context.SaveChanges();
+
+            return new JsonResult(Ok(existingStudent));
+
         }
         
         //DELETE: api/students/{id}
