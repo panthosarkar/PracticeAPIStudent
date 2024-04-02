@@ -10,7 +10,7 @@ namespace PracticeAPIStudent
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
 
-            builder.Services.AddDbContext<ApiContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("StudentInfo")));
+            builder.Services.AddDbContext<ApiContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("StudentInfo")));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

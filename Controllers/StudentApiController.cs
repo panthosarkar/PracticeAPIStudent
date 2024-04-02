@@ -16,7 +16,7 @@ namespace PracticeAPIStudent.Controllers
             _context = context;
         }
         //GET: api/students
-        [HttpGet]
+        [HttpGet("{Id}")]
         public JsonResult Get(int Id)
         {
             var result = _context.Students.Find(Id);
