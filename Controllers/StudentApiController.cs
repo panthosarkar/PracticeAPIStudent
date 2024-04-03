@@ -38,8 +38,8 @@ namespace PracticeAPIStudent.Controllers
         }
         // POST: api/students
         [HttpPost]
-        public IActionResult CreateEdit(StudentInfo student)
-        {
+        public IActionResult Create(StudentInfo student)
+        { 
             _context.Students.Add(student);
             _context.SaveChanges();
 
