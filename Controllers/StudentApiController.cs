@@ -16,8 +16,8 @@ namespace PracticeAPIStudent.Controllers
             _context = context;
         }
         //GET: api/students
-        [HttpGet("{Id}")]
-        public JsonResult Get(int Id)
+        [HttpGet("get/{Id}")]
+        public IActionResult Get(int Id)
         {
             var result = _context.Students.Find(Id);
 
@@ -29,8 +29,8 @@ namespace PracticeAPIStudent.Controllers
         }
 
         // GET: api/students/all
-        [HttpGet("all")]
-        public JsonResult GetAll()
+        [HttpGet("get/all")]
+        public IActionResult GetAll()
         {
             var result = _context.Students.ToList();
 
@@ -38,9 +38,10 @@ namespace PracticeAPIStudent.Controllers
         }
         // POST: api/students
         [HttpPost]
-        public JsonResult CreateEdit(StudentInfo student)
+        public IActionResult CreateEdit(StudentInfo student)
         {
             _context.Students.Add(student);
+            _context.SaveChanges();
 
             return new JsonResult(Ok(student));
         }
@@ -49,7 +50,7 @@ namespace PracticeAPIStudent.Controllers
 
         [HttpPut]
 
-        public JsonResult Update(StudentInfo student)
+        public IActionResult Update(StudentInfo student)
         {
             var existingStudent = _context.Students.Find(student.Id);
 
@@ -66,11 +67,12 @@ namespace PracticeAPIStudent.Controllers
 
             return new JsonResult(Ok(existingStudent));
 
+
         }
         
         //DELETE: api/students/{id}
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int Id)
+        [HttpDelete("delete/{Id}")]
+        public IActionResult Delete(int Id)
         {
             var result = _context.Students.Find(Id);
 

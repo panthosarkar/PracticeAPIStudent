@@ -11,8 +11,8 @@ using PracticeAPIStudent.Data;
 namespace PracticeAPIStudent.StudentInfoMigration
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20240402061854_InitialPersisteGrantDbMigration")]
-    partial class InitialPersisteGrantDbMigration
+    [Migration("20240403035104_InitialPersistedGrantDbMigration")]
+    partial class InitialPersistedGrantDbMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
