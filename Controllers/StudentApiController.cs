@@ -36,8 +36,8 @@ namespace PracticeAPIStudent.Controllers
 
             return new JsonResult(Ok(result));
         }
-        // POST: api/students/post
-        [HttpPost("/post")]
+        // POST: api/students
+        [HttpPost]
         public IActionResult Create(StudentInfo student)
         { 
             _context.Students.Add(student);
@@ -46,10 +46,9 @@ namespace PracticeAPIStudent.Controllers
             return new JsonResult(Ok(student));
         }
 
-        //POST : api/students/update
+        //PUT: api/students
 
         [HttpPut]
-
         public IActionResult Update(StudentInfo student)
         {
             var existingStudent = _context.Students.Find(student.Id);
@@ -70,7 +69,7 @@ namespace PracticeAPIStudent.Controllers
 
         }
         
-        //DELETE: api/students/{id}
+        //DELETE: api/students/delete/{id}
         [HttpDelete("delete/{Id}")]
         public IActionResult Delete(int Id)
         {
