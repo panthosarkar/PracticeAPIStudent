@@ -17,6 +17,16 @@ namespace PracticeAPIStudent
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", policy =>
+                {
+                    policy.WithOrigins("*")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,8 +39,7 @@ namespace PracticeAPIStudent
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
-
+            app.UseCors("AllowSpecificOrigin");
             app.MapControllers();
 
             app.Run();

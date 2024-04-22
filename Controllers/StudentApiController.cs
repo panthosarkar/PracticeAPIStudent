@@ -36,8 +36,8 @@ namespace PracticeAPIStudent.Controllers
 
             return new JsonResult(Ok(result));
         }
-        // POST: api/students
-        [HttpPost]
+        // POST: api/students/post
+        [HttpPost("/post")]
         public IActionResult Create(StudentInfo student)
         { 
             _context.Students.Add(student);
