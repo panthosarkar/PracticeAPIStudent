@@ -1,0 +1,13 @@
+.body-content {
+  margin-top: 5%;
+  max-width: 600px;
+  margin-left: 35px;
+}
+.body-content h1 {
+  font-family: "Salsa", cursive;
+  font-size: 70px;
+  color: black;
+}
+.body-content p {
+  font-size: 30px;
+}

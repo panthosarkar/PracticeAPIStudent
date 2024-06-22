@@ -1,0 +1,45 @@
+.nav-container {
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: white; /* Text color for links and other text */
+  padding: 10px 20px; /* Padding around the navigation content */
+}
+.nav-elements {
+  width: 80%;
+  margin: auto;
+}
+.nav-elements ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav-elements li {
+  height: 50px;
+}
+.nav-elements a {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.nav-elements a:hover,
+a:active {
+  font-weight: 500;
+  font-size: 25px;
+  transition: 0.2s;
+}
+.nav-elements li:first-child {
+  margin-right: auto;
+}
+.nav-elements li:nth-child(6) {
+  margin-left: auto;
+}
+.nav-elements h1 {
+  font-family: "Salsa", cursive;
+  color: black;
+  font-weight: 600;
+}
