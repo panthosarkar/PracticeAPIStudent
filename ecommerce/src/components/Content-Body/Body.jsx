@@ -14,6 +14,7 @@ function Body() {
           price comparisons & personalized recommendations. Experience
           intelligent shopping.
         </p>
+        <h1>have fun</h1>
       </div>
     </div>
   );
